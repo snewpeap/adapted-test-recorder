@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '1.3.0'
+}
+
+group 'com.jtyang'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+def props = new Properties()
+props.load(project.rootProject.file('local.properties').newDataInputStream())
+def AndroidStudioDir = props.getProperty('androidstudio.dir')
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    compileOnly fileTree(dir: new File(AndroidStudioDir, "plugins\\test-recorder\\lib"), includes: ['*.jar'])
+}
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    version = '203.7717.56'
+    type = 'IC'
+    plugins = ['android']
+}
+runIde {
+    ideDir = file(AndroidStudioDir)
+}
+patchPluginXml {
+    changeNotes = """
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>"""
+}
+test {
+    useJUnitPlatform()
+}

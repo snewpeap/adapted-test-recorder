@@ -1,0 +1,26 @@
+<idea-plugin>
+    <id>com.jtyang.test.recorder.plugin</id>
+    <name>Adopted Test Recorder</name>
+    <vendor>jtyang</vendor>
+
+    <description>Adopted Google Test Recorder to record app state (hierarchy) between action.</description>
+
+    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.android</depends>
+    <depends>com.google.gct.test.recorder</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="com.jtyang.test.recorder.MyTestRecorderAction"
+                class="com.jtyang.test.recorder.MyTestRecorderAction" text="Record Adopted Robo Script"
+                description="Record adopted Robo script using adopted test recorder">
+            <add-to-group group-id="RunMenu" anchor="after" relative-to-action="GoogleCloudTesting.TestRecorder"/>
+        </action>
+    </actions>
+</idea-plugin>
