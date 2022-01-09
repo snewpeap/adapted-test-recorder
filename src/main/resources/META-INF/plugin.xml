@@ -18,8 +18,8 @@
     <actions>
         <!-- Add your actions here -->
         <action id="com.jtyang.test.recorder.MyTestRecorderAction"
-                class="com.jtyang.test.recorder.MyTestRecorderAction" text="Record Adopted Robo Script"
-                description="Record adopted Robo script using adopted test recorder">
+                class="com.jtyang.test.recorder.MyTestRecorderAction" text="Record Adapted Robo Script"
+                description="Record adapted Robo script using adapted test recorder">
             <add-to-group group-id="RunMenu" anchor="after" relative-to-action="GoogleCloudTesting.TestRecorder"/>
         </action>
     </actions>
