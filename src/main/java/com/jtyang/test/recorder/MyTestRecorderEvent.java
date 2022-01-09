@@ -5,12 +5,13 @@ import com.google.gct.testrecorder.event.TestRecorderEvent;
 import java.util.Optional;
 
 /**
- * Extend {@link TestRecorderEvent} with hierarchy and (TODO) screenshot.
+ * Extend {@link TestRecorderEvent} with hierarchy and screenshot.
  *
  * @author jtyang
  */
 public class MyTestRecorderEvent extends TestRecorderEvent {
     private String hierarchy;
+    private String screenshot;
 
     public MyTestRecorderEvent(String eventType, long timestamp) {
         super(eventType, timestamp);
@@ -24,10 +25,12 @@ public class MyTestRecorderEvent extends TestRecorderEvent {
         this.hierarchy = hierarchy;
     }
 
-    @Override
-    public void merge(TestRecorderEvent eventToMergeWith) {
-        this.setHierarchy(((MyTestRecorderEvent) eventToMergeWith).getHierarchy());
-        super.merge(eventToMergeWith);
+    public String getScreenshot() {
+        return screenshot;
+    }
+
+    public void setScreenshot(String screenshot) {
+        this.screenshot = screenshot;
     }
 
     /**
@@ -45,5 +48,12 @@ public class MyTestRecorderEvent extends TestRecorderEvent {
             myTestRecorderEvent.addElementDescriptor(event.getElementDescriptor(i));
         }
         return myTestRecorderEvent;
+    }
+
+    public static class DummyTestRecordEvent extends MyTestRecorderEvent {
+
+        public DummyTestRecordEvent(String dummyEventType) {
+            super(dummyEventType, System.currentTimeMillis());
+        }
     }
 }
