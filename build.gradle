@@ -37,3 +37,6 @@ patchPluginXml {
 test {
     useJUnitPlatform()
 }
+buildSearchableOptions {
+    enabled = false
+}
